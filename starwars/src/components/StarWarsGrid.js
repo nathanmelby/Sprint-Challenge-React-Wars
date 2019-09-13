@@ -2,6 +2,9 @@ import React, {useEffect, useState } from 'react';
 import axios from "axios";
 import StarWarsCard from "./StarWarsCard";
 
+
+
+
 export default function StarWarsGrid() {
 
     const [characters, setCharacters] = useState([]);
@@ -21,19 +24,17 @@ export default function StarWarsGrid() {
     }, []);
 
     return(
-        <div className="list">
+        <div className="main-container">
             {characters.map(item => {
                 return (
                     <StarWarsCard
-                        key={item.id}
+                        key={item.object}
                         name={item.name}
                         gender={item.gender}
                         birth_year={item.birth_year}
-                        // films={item.films}
                         />
                     );
             })}
-
             </div>
     );
 }
