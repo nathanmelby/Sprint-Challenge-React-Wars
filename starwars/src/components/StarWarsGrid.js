@@ -11,7 +11,7 @@ export default function StarWarsGrid() {
             .get(`https://swapi.co/api/people/`)
             .then(response => {
                 const charInfo = response.data.results;
-                // console.log("these are the people", response);
+                console.log("these are the people", response.data.results);
                 setCharacters(charInfo);
             })
             .catch(error => {
@@ -27,6 +27,9 @@ export default function StarWarsGrid() {
                     <StarWarsCard
                         key={item.id}
                         name={item.name}
+                        gender={item.gender}
+                        birth_year={item.birth_year}
+                        // films={item.films}
                         />
                     );
             })}
