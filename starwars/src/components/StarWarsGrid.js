@@ -8,11 +8,11 @@ export default function StarWarsGrid() {
 
     useEffect(() => {
         axios
-            .get(``)
+            .get(`https://swapi.co/api/people/`)
             .then(response => {
-                const characters = response.people;
-                console.log("these are the people", characters);
-                setCharacters(characters);
+                const charInfo = response.data.results;
+                // console.log("these are the people", response);
+                setCharacters(charInfo);
             })
             .catch(error => {
                 console.log("The people were not returned", error)
@@ -21,12 +21,12 @@ export default function StarWarsGrid() {
     }, []);
 
     return(
-        <div className="character-cards">
+        <div className="list">
             {characters.map(item => {
                 return (
                     <StarWarsCard
-                        key={characters.id}
-                        name={characters.name}
+                        key={item.id}
+                        name={item.name}
                         />
                     );
             })}
